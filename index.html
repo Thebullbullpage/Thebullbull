@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bull Bull — Not a frog. Not a bear.</title>
+<meta name="description" content="Tiny body. Massive confidence. The Bull Bull charges every dip and refuses to lose.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Space+Mono:wght@400;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-deep:#122A1A;
+    --green-bg:#173822;
+    --green-mid:#3F8B4C;
+    --green-bright:#7FE08A;
+    --cream:#F4F1E4;
+    --gold:#D6AE3C;
+    --ink:#0B140E;
+    --line: rgba(244,241,228,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--green-deep);
+    color:var(--cream);
+    font-family:'Manrope',sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fredoka',sans-serif;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'Space Mono',monospace;
+    letter-spacing:0.02em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;
+    background:rgba(18,42,26,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.15rem;
+    color:var(--cream);
+  }
+  .logo img{width:34px;height:34px;border-radius:50%;border:2px solid var(--green-bright);}
+  .nav-cta{
+    background:var(--green-bright);color:var(--ink);
+    padding:10px 20px;border-radius:100px;
+    font-weight:700;font-size:0.9rem;
+    font-family:'Fredoka',sans-serif;
+    box-shadow:0 0 0 0 rgba(127,224,138,0.5);
+    transition:transform .2s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);}
+
+  /* HERO */
+  header.hero{
+    position:relative;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    padding:72px 24px 40px;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(63,139,76,0.55), transparent 60%),
+      var(--green-deep);
+    overflow:hidden;
+  }
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:0.78rem;
+    color:var(--green-bright);
+    background:rgba(127,224,138,0.1);
+    border:1px solid rgba(127,224,138,0.35);
+    padding:6px 14px;border-radius:100px;
+    margin-bottom:22px;
+    letter-spacing:0.08em;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.6rem);
+    line-height:1.04;
+    max-width:920px;
+  }
+  .hero h1 .strike{
+    text-decoration:line-through;
+    text-decoration-thickness:4px;
+    text-decoration-color:rgba(244,241,228,0.35);
+    color:rgba(244,241,228,0.45);
+  }
+  .hero h1 .accent{color:var(--green-bright);}
+  .hero p.sub{
+    max-width:600px;margin:22px auto 0;
+    font-size:1.08rem;line-height:1.6;
+    color:rgba(244,241,228,0.82);
+  }
+  .hero-ctas{
+    display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;justify-content:center;
+  }
+  .btn-primary{
+    background:var(--green-bright);color:var(--ink);
+    padding:15px 30px;border-radius:100px;font-weight:700;
+    font-family:'Fredoka',sans-serif;font-size:1rem;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(127,224,138,0.28);}
+  .btn-ghost{
+    border:1px solid rgba(244,241,228,0.35);
+    padding:15px 30px;border-radius:100px;font-weight:700;
+    font-family:'Fredoka',sans-serif;font-size:1rem;
+    color:var(--cream);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .btn-ghost:hover{border-color:var(--green-bright);background:rgba(127,224,138,0.08);}
+
+  .hero-stage{
+    position:relative;margin-top:56px;
+    width:min(560px, 92vw);
+    border-radius:32px;
+    overflow:hidden;
+    border:3px solid rgba(127,224,138,0.35);
+    box-shadow:0 30px 80px rgba(0,0,0,0.5);
+  }
+  .hero-stage video{width:100%;display:block;}
+  .hero-stage .badge{
+    position:absolute;bottom:16px;right:16px;
+    font-family:'Space Mono',monospace;font-size:0.72rem;
+    background:rgba(11,20,14,0.7);border:1px solid rgba(127,224,138,0.4);
+    padding:6px 10px;border-radius:100px;color:var(--green-bright);
+  }
+
+  /* TICKER */
+  .ticker-band{
+    background:var(--ink);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    padding:14px 0;
+  }
+  .ticker-track{
+    display:flex;width:max-content;
+    animation:scroll 26s linear infinite;
+  }
+  .ticker-track span{
+    font-family:'Space Mono',monospace;
+    font-size:0.92rem;
+    color:var(--green-bright);
+    padding:0 28px;white-space:nowrap;
+  }
+  .ticker-track span.dim{color:rgba(244,241,228,0.55);}
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{animation:none;}
+  }
+
+  /* SECTION generic */
+  section{padding:96px 24px;}
+  .section-head{max-width:640px;margin:0 auto 48px;text-align:center;}
+  .section-head .eyebrow{margin:0 auto 16px;display:inline-block;}
+  .section-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem);}
+  .section-head p{margin-top:14px;color:rgba(244,241,228,0.75);line-height:1.6;}
+
+  /* LORE */
+  .lore{
+    background:var(--green-bg);
+  }
+  .lore-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+    max-width:1100px;margin:0 auto;
+  }
+  .lore-grid img{
+    border-radius:28px;border:3px solid rgba(127,224,138,0.25);
+  }
+  .lore-text p{
+    font-size:1.05rem;line-height:1.75;color:rgba(244,241,228,0.85);
+    margin-bottom:18px;
+  }
+  .lore-text p strong{color:var(--green-bright);font-family:'Fredoka',sans-serif;}
+  @media (max-width:820px){
+    .lore-grid{grid-template-columns:1fr;gap:32px;}
+  }
+
+  /* TRAITS */
+  .traits-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+    max-width:1100px;margin:0 auto;
+  }
+  .trait-card{
+    background:var(--green-bg);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:26px 20px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .trait-card:hover{border-color:var(--green-bright);transform:translateY(-4px);}
+  .trait-card .k{
+    font-family:'Space Mono',monospace;font-size:0.72rem;
+    color:var(--green-bright);letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .trait-card .v{
+    font-family:'Fredoka',sans-serif;font-weight:600;
+    font-size:1.15rem;margin-top:10px;
+  }
+  @media (max-width:900px){
+    .traits-grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+  /* JOIN */
+  .join{
+    background:radial-gradient(circle at 50% 20%, rgba(63,139,76,0.4), transparent 60%), var(--green-deep);
+    text-align:center;
+  }
+  .join h2{font-size:clamp(2rem,4.4vw,3rem);max-width:720px;margin:0 auto;}
+  .join p{color:rgba(244,241,228,0.78);max-width:560px;margin:16px auto 34px;line-height:1.6;}
+  .social-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .social-row a{
+    display:flex;align-items:center;gap:8px;
+    border:1px solid rgba(244,241,228,0.3);
+    padding:13px 24px;border-radius:100px;
+    font-family:'Fredoka',sans-serif;font-weight:600;
+    transition:all .2s ease;
+  }
+  .social-row a:hover{border-color:var(--green-bright);background:rgba(127,224,138,0.1);}
+
+  /* FOOTER */
+  footer{
+    padding:40px 24px;
+    border-top:1px solid var(--line);
+    text-align:center;
+  }
+  footer .logo{justify-content:center;margin-bottom:10px;}
+  footer .fine{
+    font-family:'Space Mono',monospace;font-size:0.78rem;
+    color:rgba(244,241,228,0.5);margin-top:8px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><img src="assets/bullbull-badge.png" alt="The Bull Bull badge"> THE BULL BULL</div>
+  <a class="nav-cta" href="#join">Join the Herd</a>
+</nav>
+
+<header class="hero">
+  <span class="eyebrow mono">🐂 BULLISH IS A PERSONALITY</span>
+  <h1>
+    <span class="strike">Not a frog.</span> <span class="strike">Not a bear.</span><br>
+    Just <span class="accent">The Bull Bull.</span>
+  </h1>
+  <p class="sub">Tiny body. Massive confidence. Carries a rifle, charges every dip, and refuses to lose.</p>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="#join">Join the Herd</a>
+    <a class="btn-ghost" href="#lore">Read the Lore</a>
+  </div>
+  <div class="hero-stage">
+    <video autoplay muted loop playsinline>
+      <source src="assets/bullbull-loop.mp4" type="video/mp4">
+    </video>
+    <span class="badge">LOOP 01 · BULLBULL</span>
+  </div>
+</header>
+
+<div class="ticker-band">
+  <div class="ticker-track mono">
+    <span>🐂 CHARGES EVERY DIP</span><span class="dim">·</span>
+    <span>TINY BODY, MASSIVE CONFIDENCE</span><span class="dim">·</span>
+    <span>💥 REFUSES TO LOSE</span><span class="dim">·</span>
+    <span>BULLISH IS A PERSONALITY</span><span class="dim">·</span>
+    <span>🐂 CHARGES EVERY DIP</span><span class="dim">·</span>
+    <span>TINY BODY, MASSIVE CONFIDENCE</span><span class="dim">·</span>
+    <span>💥 REFUSES TO LOSE</span><span class="dim">·</span>
+    <span>BULLISH IS A PERSONALITY</span><span class="dim">·</span>
+  </div>
+</div>
+
+<section class="lore" id="lore">
+  <div class="lore-grid">
+    <img src="assets/bullbull-badge.png" alt="The Bull Bull mascot artwork">
+    <div class="lore-text">
+      <span class="eyebrow mono">THE LORE</span>
+      <h2 style="margin:16px 0 20px;font-size:clamp(1.6rem,3vw,2.2rem);">A helmet, a rifle, and zero doubt.</h2>
+      <p>Every herd has a scout. <strong>The Bull Bull</strong> volunteered — mostly because nobody else wanted to walk point during a red candle.</p>
+      <p>Horns up, scope steady, nose ring catching the light. It doesn't flinch at a dip. It <strong>charges</strong> it.</p>
+      <p>No cape. No slogan team. Just a small green body carrying a very large sense of certainty into every situation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="traits">
+  <div class="section-head">
+    <span class="eyebrow mono">FIELD NOTES</span>
+    <h2>Standard issue.</h2>
+    <p>Everything The Bull Bull brings to the chart.</p>
+  </div>
+  <div class="traits-grid">
+    <div class="trait-card">
+      <div class="k">Loadout</div>
+      <div class="v">Sniper Rifle</div>
+    </div>
+    <div class="trait-card">
+      <div class="k">Headgear</div>
+      <div class="v">Combat Helmet</div>
+    </div>
+    <div class="trait-card">
+      <div class="k">Diet</div>
+      <div class="v">Dips, exclusively</div>
+    </div>
+    <div class="trait-card">
+      <div class="k">Status</div>
+      <div class="v">Permanently bullish</div>
+    </div>
+  </div>
+</section>
+
+<section class="join" id="join">
+  <span class="eyebrow mono">JOIN THE HERD</span>
+  <h2>Bullish isn't a trend. It's a personality.</h2>
+  <p>Follow along for drops, sightings, and whatever The Bull Bull charges at next.</p>
+  <div class="social-row">
+    <a href="#">𝕏 Follow on X</a>
+    <a href="#">✈️ Telegram</a>
+    <a href="#">💬 Discord</a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo"><img src="assets/bullbull-badge.png" alt="The Bull Bull badge"> THE BULL BULL</div>
+  <div class="fine mono">🐂💥 not a frog. not a bear.</div>
+  <div class="fine">© 2026 The Bull Bull. For entertainment purposes. Not financial advice.</div>
+</footer>
+
+</body>
+</html>
